@@ -1,0 +1,152 @@
+<form [formGroup]="form" class="form-container mt-3">
+
+  <!--Policy-->
+  <div class="form-group">
+    <label for="inputPolicy" i18n>Policy</label>
+    <select id="inputPolicy" class="form-control" formControlName="policy" [class.is-invalid]="form.get('policy').invalid && form.get('policy').touched">
+      <option [ngValue]="null" [selected]="true" disabled hidden i18n>Choose...</option>
+      <option i18n>House Insurance</option>
+      <option i18n>Travel Insurance</option>
+      <option i18n>Vehicle Insurance</option>
+    </select>
+    <small id="policyHelpText"
+            [ngClass]="(form.get('policy').invalid && form.get('policy').touched) ? 'text-danger' : 'text-muted'"
+            class="form-text">
+            <ng-container *ngIf="!(form.get('policy').invalid && form.get('policy').touched);else policyNotValid"
+                          i18n>Select a policy you want quote on.
+            </ng-container>
+            <ng-template #policyNotValid i18n>Policy is a required field!</ng-template>
+    </small>
+  </div>
+  <!--/Policy-->
+
+  <!--Email-->
+  <div class="form-group">
+    <label for="inputEmail" i18n>Email</label>
+    <input type="email"
+            class="form-control"
+            id="inputEmail"
+            placeholder="Email" i18n-placeholder
+            formControlName="email" email
+            [class.is-invalid]="form.get('email').invalid && form.get('email').touched">
+    <small id="emailHelpText"
+            [ngClass]="(form.get('email').invalid && form.get('email').touched) ? 'text-danger' : 'text-muted'"
+            class="form-text">
+            <ng-container *ngIf="!(form.get('email').invalid && form.get('email').touched);else emailNotValid"
+                          i18n>We'll never share your email with anyone else.
+            </ng-container>
+            <ng-template #emailNotValid i18n>Please enter valid Email Id!</ng-template>
+    </small>
+  </div>
+  <!--/Email-->
+
+  <!--Name-->
+  <div class="form-group">
+    <label for="inputName" i18n>Name</label>
+    <input type="text"
+            class="form-control"
+            id="inputName"
+            placeholder="Name" i18n-placeholder
+            formControlName="name"
+            [class.is-invalid]="form.get('name').invalid && form.get('name').touched">
+    <small id="nameHelpText"
+            [ngClass]="(form.get('name').invalid && form.get('name').touched) ? 'text-danger' : 'text-muted'"
+            class="form-text">
+            <ng-container *ngIf="!(form.get('name').invalid && form.get('name').touched);else nameNotValid"
+                          i18n>FirstName followed by SurName
+            </ng-container>
+            <ng-template #nameNotValid i18n>Name is a required field!</ng-template>
+    </small>
+  </div>
+  <!--/Name-->
+
+  <!--Age and sex-->
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputAge" i18n>Age</label>
+      <input type="number"
+              class="form-control"
+              id="inputAge"
+              placeholder="Age" i18n-placeholder
+              formControlName="age"
+              [class.is-invalid]="form.get('age').invalid && form.get('age').touched">
+      <small id="nameHelpText"
+              *ngIf="form.get('age').invalid && form.get('age').touched"
+              class="form-text text-danger" i18n>Age is a required field!
+      </small>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputSex" i18n>Sex</label>
+      <select id="inputSex" class="form-control" formControlName="sex">
+        <option [ngValue]="null" [selected]="true" disabled hidden i18n>Choose...</option>
+        <option i18n>Male</option>
+        <option i18n>Female</option>
+      </select>
+    </div>
+  </div>
+  <!--/Age and sex-->
+
+  <!--Phone-->
+  <div class="form-group">
+    <label for="inputPhone" i18n>Phone</label>
+    <input type="number"
+            class="form-control"
+            id="inputPhone"
+            placeholder="Phone" i18n-placeholder
+            formControlName="phone">
+  </div>
+  <!--/Phone-->
+
+  <!--Address-->
+  <div class="form-group">
+    <label for="inputAddress" i18n>Address</label>
+    <input type="text"
+            class="form-control"
+            id="inputAddress"
+            placeholder="Apartment, studio, or floor" i18n-placeholder
+            formControlName="address">
+  </div>
+  <!--/Address-->
+
+  <!--City-->
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity" i18n>City</label>
+      <input type="text"
+              class="form-control"
+              id="inputCity"
+              formControlName="city">
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="inputZip" i18n>Zip</label>
+      <input type="text"
+              class="form-control"
+              id="inputZip"
+              formControlName="zip">
+    </div>
+  </div>
+  <!--/City-->
+
+  <!--Buttons-->
+  <div class="flex-buttons">
+    <input hidden id="xml--upload-file"
+            type="file"
+            accept=".xml"
+            aria-label="Upload quote.xml"
+            i18n-aria-label
+            (change)="onUploadXml($event)">
+    <label for="xml--upload-file"
+            class="btn btn-info" i18n>Upload quote.xml</label>
+
+    <div class="ml-2">
+      <button class="btn btn-primary"
+              [disabled]="form.invalid"
+              (click)="submit()"
+              i18n>Sign in</button>
+    </div>
+  </div>
+  <!--/Buttons-->
+
+</form>
+

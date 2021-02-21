@@ -1,0 +1,25 @@
+<ng-container [ngSwitch]="policyType">
+  <ng-container *ngSwitchCase="'homePage'">
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let slide of apiData">
+        <ng-template class="slide" carouselSlide [id]="slide.id">
+          <img [src]="slide.url" [alt]="slide.id" [title]="slide.id" (click)="navigateTo(slide.id)">
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'houseInsurance'">
+    <img style="width: 100%; height:15rem" [src]="apiData[0].url" [alt]="apiData[0].id" [title]="apiData[0].id">
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'travelInsurance'">
+    <img style="width: 100%; height:15rem" [src]="apiData[1].url" [alt]="apiData[1].id" [title]="apiData[1].id">
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'carInsurance'">
+    <img style="width: 100%; height:15rem" [src]="apiData[2].url" [alt]="apiData[2].id" [title]="apiData[2].id">
+  </ng-container>
+</ng-container>
+
+

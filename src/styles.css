@@ -1,0 +1,32 @@
+body {
+  font-size: 14px;
+  color:#000;
+  margin: 0;
+  padding: 0;
+}
+
+.owl-item {
+  height: 30rem;
+}
+
+.form-container {
+  width: 500px;
+  margin: auto;
+}
+
+.flex-buttons {
+  display: flex;
+  justify-content: flex-start
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.flex-item {
+  border-radius: 1rem;
+  border: 1px solid #eaeaea;
+  background-color: #f6f6f6;
+  margin: 2rem;
+}
